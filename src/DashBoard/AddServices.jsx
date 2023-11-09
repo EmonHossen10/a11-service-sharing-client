@@ -6,9 +6,9 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 const AddServices = () => {
   const { user } = useContext(AuthContext);
-  // console.log(user.displayName)
-  // console.log(user.email)
-  console.log(user?.displayName);
+  const UserName = user?.displayName;
+  const email = user?.email;
+  console.log(UserName, email);
 
   const handleAddService = (e) => {
     e.preventDefault();
@@ -24,7 +24,8 @@ const AddServices = () => {
       Name,
       serviceArea,
       Price,
-
+      UserName,
+      email,
       description,
     };
     console.log(product);
@@ -49,9 +50,9 @@ const AddServices = () => {
           });
         }
       })
-      .catch(error=>{
-        console.log(error)
-      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

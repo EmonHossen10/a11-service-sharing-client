@@ -21,25 +21,33 @@ const ServiceData = () => {
   const handleBookService = (e) => {
     e.preventDefault();
     const form = e.target;
-    const userEmail = form.email.value;
+    const email = form.email.value;
     const date = form.date.value;
     const plan = form.plan.value;
     const order = {
       serviceName,
-      _id,
-      userEmail,
+      email,
       date,
+      serviceImage,
       plan,
     };
     console.log(order);
 
-    axios.post("http://localhost:5000/addbookings",order)
-    .then(data=>{
-      console.log(data.data)
-    })
-    .catch(error => {
-      console.error("Error:", error);
-    });
+    axios
+      .post("http://localhost:5000/addbookings", order)
+      .then((data) => {
+        console.log(data.data);
+        if (data.data.insertedId) {
+          Swal.fire({
+            icon: "success",
+            title: "Successfully added",
+            text: "Products Successfully added to backend",
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
 
     // fetching
 
@@ -61,7 +69,7 @@ const ServiceData = () => {
     //       });
     //     }
     //   });
-  }; 
+  };
   return (
     <div>
       <Navbar></Navbar>

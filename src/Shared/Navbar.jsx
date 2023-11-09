@@ -144,7 +144,7 @@ const Navbar = () => {
       <div className="navbar-end ">
         {user ? (
           <div className="flex">
-            <p className=" flex  flex-col lg:flex-row items-center gap-2 lg:mr-3">
+            <div className=" flex  flex-col lg:flex-row items-center gap-2 lg:mr-3">
               <span className="lg:text-lg  font-semibold">
                 {user.displayName}
               </span>
@@ -153,7 +153,7 @@ const Navbar = () => {
                   <img src={user.photoURL} />
                 </div>
               </div>
-            </p>
+            </div>
 
             <button onClick={HandleLogout} className="btn btn-ghost ">
               LogOut
