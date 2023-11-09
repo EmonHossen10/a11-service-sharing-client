@@ -1,0 +1,79 @@
+import { Link } from "react-router-dom";
+import Navbar from "../Shared/Navbar";
+import { FcGoogle } from "react-icons/fc";
+
+const Login = () => {
+  return (
+    <>
+      <Navbar></Navbar>
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col md:gap-24   lg:flex-row">
+          <div className="text-center lg:text-left">
+            <img
+              className="w-[800px]"
+              src="https://i.imgur.com/AchMFsT.jpg"
+              alt=""
+            />
+          </div>
+          <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+            <form className="card-body">
+              <h1 className="md:text-5xl text-3xl font-bold mb-5">
+                Login now!
+              </h1>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="email"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  type="password"
+                  placeholder="password"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+
+              <div className="form-control mt-6">
+                <button className="btn btn-primary">Login</button>
+              </div>
+              <div className="flex items-center pt-4 space-x-1">
+                <div className="flex-1  h-px sm:w-16 bg-gray-700"></div>
+                <p className="px-3 text-sm text-center text-gray-500">
+                  Login with social accounts
+                </p>
+                <div className="flex-1  h-px sm:w-16 bg-gray-700"></div>
+              </div>
+              {/* social */}
+              <div className="flex justify-center space-x-4">
+                <button
+                  aria-label="Log in with Google"
+                  className="p-1 rounded-sm"
+                >
+                  <FcGoogle className="text-3xl"></FcGoogle>
+                </button>
+              </div>
+              <p className="text-xs text-center sm:px-6 dark:text-gray-400">
+                Do not have an account ?
+                <Link to="/registration" >
+                  <button className="font-semibold ms-2 text-blue-600 underline"> Sign up</button>
+                </Link>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Login;

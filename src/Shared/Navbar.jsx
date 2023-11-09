@@ -31,20 +31,32 @@ const Navbar = () => {
           Services
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/dashboard"
-          className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? " bg-[#FFDC39] rounded-none font-bold  "
-              : ""
-          }
-        >
-          Dashboard
-        </NavLink>
+      {/* dropdown */}
+{/*  
+      <div className="navbar-center   hidden lg:flex">
+    <ul className="menu menu-horizontal px-1">
+      
+      <li tabIndex={0}>
+        <details>
+          <summary   >Parent</summary>
+          <ul className="p-2 ">
+            <li className="w-full"><a>My Services</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+        </details>
       </li>
+      
+    </ul>
+  </div>
+  */}
+  <details className="dropdown">
+  <summary className="m-1 btn">open or close</summary>
+  <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+    <li><a>Item 1</a></li>
+    <li><a>Item 2</a></li>
+  </ul>
+</details>
+
     </>
   );
   return (
