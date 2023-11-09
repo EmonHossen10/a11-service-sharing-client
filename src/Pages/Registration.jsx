@@ -4,6 +4,7 @@ import Navbar from "../Shared/Navbar";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from "../Shared/Footer";
 
  
 
@@ -139,6 +140,8 @@ const Registration = () => {
         </div>
         <ToastContainer />
       </div>
+
+    <Footer></Footer>
             
         </>
     );

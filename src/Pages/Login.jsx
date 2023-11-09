@@ -1,8 +1,40 @@
 import { Link } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
 import { FcGoogle } from "react-icons/fc";
+import Footer from "../Shared/Footer";
 
 const Login = () => {
+
+  const handleLogin = (e) => {
+
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
+
+    // reset
+    // setError("");
+    // setSuccess("");
+
+    // signInUSer(email, password)
+    //   .then((result) => {
+    //     console.log(result.user);
+    //     setSuccess("Successfully Login.");
+    //     toast("Successfully Login.");
+
+        
+    //     // navigate after login
+    //     navigate(location?.state ? location.state : "/")
+    //   })
+    //   .catch((error) => {
+    //     setError(error.message);
+    //     toast.error(error.message);
+
+    //     console.error(error.message);
+    //   });
+  };
+
+
   return (
     <>
       <Navbar></Navbar>
@@ -16,7 +48,7 @@ const Login = () => {
             />
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleLogin} className="card-body">
               <h1 className="md:text-5xl text-3xl font-bold mb-5">
                 Login now!
               </h1>
@@ -26,6 +58,7 @@ const Login = () => {
                 </label>
                 <input
                   type="email"
+                  name="email"
                   placeholder="email"
                   className="input input-bordered"
                   required
@@ -37,6 +70,7 @@ const Login = () => {
                 </label>
                 <input
                   type="password"
+                  name="password"
                   placeholder="password"
                   className="input input-bordered"
                   required
@@ -72,6 +106,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

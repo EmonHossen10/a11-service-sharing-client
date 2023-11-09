@@ -13,6 +13,7 @@ import Registration from "./Pages/Registration.jsx";
 import MyServices from "./DashBoard/MyServices.jsx";
 import MySchedule from "./DashBoard/MySchedule.jsx";
 import AddServices from "./DashBoard/AddServices.jsx";
+import ServiceData from "./Components/ServiceData.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,12 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
+        loader:()=>fetch("http://localhost:5000/services")
+      },
+      {
+        path:"/services/:id",
+        element: <ServiceData></ServiceData>,
+        loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
       },
       {
         path: "/myservices",
