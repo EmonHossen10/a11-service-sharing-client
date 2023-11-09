@@ -14,6 +14,7 @@ import MyServices from "./DashBoard/MyServices.jsx";
 import MySchedule from "./DashBoard/MySchedule.jsx";
 import AddServices from "./DashBoard/AddServices.jsx";
 import ServiceData from "./Components/ServiceData.jsx";
+import AuthProvider from "./Providers/AuthProvider.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,12 +28,13 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
-        loader:()=>fetch("http://localhost:5000/services")
+        loader: () => fetch("http://localhost:5000/services"),
       },
       {
-        path:"/services/:id",
+        path: "/services/:id",
         element: <ServiceData></ServiceData>,
-        loader:({params})=>fetch(`http://localhost:5000/services/${params.id}`)
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
       },
       {
         path: "/myservices",
@@ -46,7 +48,7 @@ const router = createBrowserRouter([
         path: "/addservices",
         element: <AddServices></AddServices>,
       },
-      
+
       {
         path: "/login",
         element: <Login></Login>,
@@ -61,6 +63,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

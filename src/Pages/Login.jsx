@@ -1,37 +1,65 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
 import { FcGoogle } from "react-icons/fc";
 import Footer from "../Shared/Footer";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const Login = () => {
 
-  const handleLogin = (e) => {
+  const { loginUser, GoogleSignIn } = useContext(AuthContext);
 
+  const location = useLocation();
+  console.log("location in login page", location);
+  const navigate = useNavigate();
+  const handleLogin = (e) => {
     e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
     console.log(email, password);
 
-    // reset
-    // setError("");
-    // setSuccess("");
+    // login user
+    loginUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        Swal.fire({
+          icon: "success",
+          title: "Successfully added",
+          text: "Products Successfully added to backend",
+        });
 
-    // signInUSer(email, password)
-    //   .then((result) => {
-    //     console.log(result.user);
-    //     setSuccess("Successfully Login.");
-    //     toast("Successfully Login.");
+        // navigate after login
 
-        
-    //     // navigate after login
-    //     navigate(location?.state ? location.state : "/")
-    //   })
-    //   .catch((error) => {
-    //     setError(error.message);
-    //     toast.error(error.message);
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error(error.message);
+      });
+  };
 
-    //     console.error(error.message);
-    //   });
+  /// google
+  const handleGoogleLogin = () => {
+    GoogleSignIn()
+      .then((result) => {
+        console.log(result.user);
+
+        Swal.fire({
+          icon: "success",
+          title: "Successfully added",
+          text: "Products Successfully added to backend",
+        });
+        // navigate after login
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.error(error.message);
+
+        toast.error(error.message);
+      });
   };
 
 
@@ -89,7 +117,7 @@ const Login = () => {
               </div>
               {/* social */}
               <div className="flex justify-center space-x-4">
-                <button
+                <button onClick={handleGoogleLogin}
                   aria-label="Log in with Google"
                   className="p-1 rounded-sm"
                 >
@@ -104,6 +132,7 @@ const Login = () => {
               </p>
             </form>
           </div>
+          <ToastContainer></ToastContainer>
         </div>
       </div>
       <Footer></Footer>

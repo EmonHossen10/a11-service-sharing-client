@@ -1,14 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../Shared/Navbar";
 
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Footer from "../Shared/Footer";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
  
 
 const Registration = () => {
+
+  const {createUser, handleUpdateProfile}=useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -34,27 +40,27 @@ const Registration = () => {
 
     // make user
 
-    // createUser(email, password)
-    //   .then((result) => {
-    //     console.log(result.user);
-    //     handleUpdateProfile(name, photo).then(() => {
-    //       Swal.fire({
-    //         icon: "success",
-    //         title: "Successful",
-    //         text: "  Successfully Create User ",
-    //       });
-    //     });
-    //     navigate("/");
-    //   })
+    createUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        handleUpdateProfile(name, photo).then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "Successful",
+            text: "  Successfully Create User ",
+          });
+        });
+        navigate("/");
+      })
 
-    //   .catch((error) => {
-    //     console.log(error.message);
-    //     Swal.fire({
-    //       icon: "error",
-    //       title: "Error...",
-    //       text: error.message,
-    //     });
-    //   });
+      .catch((error) => {
+        console.log(error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Error...",
+          text: error.message,
+        });
+      });
   };
 
 
