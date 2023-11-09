@@ -15,6 +15,7 @@ import MySchedule from "./DashBoard/MySchedule.jsx";
 import AddServices from "./DashBoard/AddServices.jsx";
 import ServiceData from "./Components/ServiceData.jsx";
 import AuthProvider from "./Providers/AuthProvider.jsx";
+import PrivateRoute from "./Routes/PrivateRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/services/:id",
-        element: <ServiceData></ServiceData>,
+        element: <PrivateRoute><ServiceData></ServiceData></PrivateRoute>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
       },

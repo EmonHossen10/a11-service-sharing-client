@@ -1,6 +1,23 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+
+  const { user, Logout } = useContext(AuthContext);
+  const HandleLogout = () => {
+    Logout().then(() => {
+      Swal.fire({
+        icon: "success",
+        title: "Successful",
+        text: "  Successfully LogOut ",
+      });
+    });
+  };
+
+
+
   const nav = (
     <>
       <li>
@@ -33,7 +50,8 @@ const Navbar = () => {
       </li>
       {/* dropdown */}
 
-      <details className="dropdown">
+      {
+        user && <details className="dropdown">
         <summary className="m-1 btn">Dashboard</summary>
         <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
           <li>
@@ -81,6 +99,7 @@ const Navbar = () => {
           
         </ul>
       </details>
+      }
     </>
   );
   return (
@@ -121,10 +140,34 @@ const Navbar = () => {
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal px-1  ">{nav}</ul>
       </div>
-      <div className="navbar-end ">
+      {/* <div className="navbar-end ">
         <Link to="/login">
           <button className="btn btn-ghost ">Login</button>
         </Link>
+      </div> */}
+      <div className="navbar-end ">
+        {user ? (
+          <div className="flex">
+            <p className=" flex  flex-col lg:flex-row items-center gap-2 lg:mr-3">
+              <span className="lg:text-lg  font-semibold">
+                {user.displayName}
+              </span>
+              <div className="avatar">
+                <div className="w-8 mask rounded-full">
+                  <img src={user.photoURL} />
+                </div>
+              </div>
+            </p>
+
+            <button onClick={HandleLogout} className="btn btn-ghost ">
+              LogOut
+            </button>
+          </div>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-ghost ">Login</button>
+          </Link>
+        )}
       </div>
     </div>
   );
