@@ -48,7 +48,10 @@ const AddServices = () => {
             text: "Products Successfully added to backend",
           });
         }
-      });
+      })
+      .catch(error=>{
+        console.log(error)
+      })
   };
 
   return (
@@ -79,7 +82,7 @@ const AddServices = () => {
               <input
                 type="text"
                 name="serviceName"
-                placeholder="Product Name "
+                placeholder="Service Name "
                 className="input input-bordered input-info  "
                 required
               />

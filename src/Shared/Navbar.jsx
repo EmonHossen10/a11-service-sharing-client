@@ -4,7 +4,6 @@ import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
-
   const { user, Logout } = useContext(AuthContext);
   const HandleLogout = () => {
     Logout().then(() => {
@@ -15,8 +14,6 @@ const Navbar = () => {
       });
     });
   };
-
-
 
   const nav = (
     <>
@@ -50,56 +47,55 @@ const Navbar = () => {
       </li>
       {/* dropdown */}
 
-      {
-        user && <details className="dropdown">
-        <summary className="m-1 btn">Dashboard</summary>
-        <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-          <li>
-            <NavLink
-              to="/myservices"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? " bg-[#FFDC39] rounded-none font-bold  "
-                  : ""
-              }
-            >
-              My-services
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/myschedule"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? " bg-[#FFDC39] rounded-none font-bold  "
-                  : ""
-              }
-            >
-           My-schedules
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/addservices"
-              className={({ isActive, isPending }) =>
-                isPending
-                  ? "pending"
-                  : isActive
-                  ? " bg-[#FFDC39] rounded-none font-bold  "
-                  : ""
-              }
-            >
-            Add-services
-            </NavLink>
-          </li>
-          
-        </ul>
-      </details>
-      }
+      {user && (
+        <details className="dropdown">
+          <summary className="m-1 btn">Dashboard</summary>
+          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+            <li>
+              <NavLink
+                to="/myservices"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? " bg-[#FFDC39] rounded-none font-bold  "
+                    : ""
+                }
+              >
+                My-services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/myschedule"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? " bg-[#FFDC39] rounded-none font-bold  "
+                    : ""
+                }
+              >
+                My-schedules
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/addservices"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? " bg-[#FFDC39] rounded-none font-bold  "
+                    : ""
+                }
+              >
+                Add-services
+              </NavLink>
+            </li>
+          </ul>
+        </details>
+      )}
     </>
   );
   return (
