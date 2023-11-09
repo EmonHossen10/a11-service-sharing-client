@@ -10,6 +10,9 @@ import Home from "./Pages/Home.jsx";
 import Services from "./Components/Services.jsx";
 import Login from "./Pages/Login.jsx";
 import Registration from "./Pages/Registration.jsx";
+import MyServices from "./DashBoard/MyServices.jsx";
+import MySchedule from "./DashBoard/MySchedule.jsx";
+import AddServices from "./DashBoard/AddServices.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +26,18 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services></Services>,
+      },
+      {
+        path: "/myservices",
+        element: <MyServices></MyServices>,
+      },
+      {
+        path: "/myschedule",
+        element: <MySchedule></MySchedule>,
+      },
+      {
+        path: "/addservices",
+        element: <AddServices></AddServices>,
       },
       
       {
