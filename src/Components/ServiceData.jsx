@@ -1,13 +1,15 @@
 import { useLoaderData } from "react-router-dom";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const ServiceData = () => {
   const data = useLoaderData();
-  console.log(Object.keys(data).join(","));
+
   const {
     _id,
-    id,
+
     serviceName,
     serviceDescription,
     serviceProvider,
@@ -18,8 +20,48 @@ const ServiceData = () => {
 
   const handleBookService = (e) => {
     e.preventDefault();
-  };
+    const form = e.target;
+    const userEmail = form.email.value;
+    const date = form.date.value;
+    const plan = form.plan.value;
+    const order = {
+      serviceName,
+      _id,
+      userEmail,
+      date,
+      plan,
+    };
+    console.log(order);
 
+    axios.post("http://localhost:5000/addbookings",order)
+    .then(data=>{
+      console.log(data.data)
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+
+    // fetching
+
+    // fetch("http://localhost:5000/addbookings", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(order),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data, "success");
+    //     if (data.insertedId) {
+    //       Swal.fire({
+    //         icon: "success",
+    //         title: "Successfully added",
+    //         text: "Products Successfully added to backend",
+    //       });
+    //     }
+    //   });
+  }; 
   return (
     <div>
       <Navbar></Navbar>
@@ -77,11 +119,11 @@ const ServiceData = () => {
               className="btn btn-outline btn-warning  "
               onClick={() => document.getElementById("my_modal_1").showModal()}
             >
-              Book Now
+              Book
             </button>
             <dialog id="my_modal_1" className="modal">
               <div className="modal-box">
-                <form className="card-body">
+                <form onSubmit={handleBookService} className="card-body">
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text">Service Name</span>
@@ -121,6 +163,7 @@ const ServiceData = () => {
                     </label>
                     <input
                       type="email"
+                      name="email"
                       placeholder="email"
                       className="input input-bordered"
                       required
@@ -145,6 +188,7 @@ const ServiceData = () => {
                     </label>
                     <input
                       type="text"
+                      name="plan"
                       placeholder="Your demanding texts"
                       className="input input-bordered"
                       required
@@ -152,12 +196,7 @@ const ServiceData = () => {
                   </div>
 
                   <div className="form-control mt-6">
-                    <button
-                      onClick={handleBookService}
-                      className="btn btn-warning"
-                    >
-                      Book Now
-                    </button>
+                    <button className="btn btn-warning">Book Now</button>
                   </div>
                 </form>
                 <div className="modal-action">
