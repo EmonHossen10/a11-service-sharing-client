@@ -1,7 +1,7 @@
-import Swal from "sweetalert2";
+ 
 
 /* eslint-disable react/prop-types */
-const MyserviceSingle = ({ item ,handleDelete}) => {
+const MyserviceSingle = ({ item ,handleDelete }) => {
   const { _id, Image, Name, Price, description, serviceArea, UserName, email } =
     item;
   console.log(UserName, email);
@@ -19,7 +19,7 @@ const MyserviceSingle = ({ item ,handleDelete}) => {
         <p>Service Area : {serviceArea}</p>
         <div className="card-actions justify-end">
           <button className="btn btn-warning  ">Edit</button>
-          <button onClick={() => handleDelete(_id)} className="btn btn-error">
+          <button  onClick={()=>handleDelete(_id)} className="btn btn-error"> 
             Delete
           </button>
         </div>
