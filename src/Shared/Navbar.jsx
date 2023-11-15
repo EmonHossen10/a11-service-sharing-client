@@ -49,8 +49,23 @@ const Navbar = () => {
 
       {user && (
         <details className="dropdown">
-          <summary className="m-1 btn">Dashboard</summary>
+          <summary className="m-1 ">Dashboard</summary>
+          {/* <li className="m-1 ">Dashboard</li> */}
           <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+            <li>
+              <NavLink
+                to="/addservices"
+                className={({ isActive, isPending }) =>
+                  isPending
+                    ? "pending"
+                    : isActive
+                    ? " bg-[#FFDC39] rounded-none font-bold  "
+                    : ""
+                }
+              >
+                Add-services
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 to="/myservices"
@@ -65,6 +80,7 @@ const Navbar = () => {
                 My-services
               </NavLink>
             </li>
+
             <li>
               <NavLink
                 to="/myschedule"
@@ -77,20 +93,6 @@ const Navbar = () => {
                 }
               >
                 My-schedules
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/addservices"
-                className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? " bg-[#FFDC39] rounded-none font-bold  "
-                    : ""
-                }
-              >
-                Add-services
               </NavLink>
             </li>
           </ul>

@@ -16,11 +16,15 @@ import AddServices from "./DashBoard/AddServices.jsx";
 import ServiceData from "./Components/ServiceData.jsx";
 import AuthProvider from "./Providers/AuthProvider.jsx";
 import PrivateRoute from "./Routes/PrivateRoute.jsx";
+import ErrorPage from "./ErrorPage.jsx";
+import UpdateService from "./DashBoard/UpdateService.jsx";
+ 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
+    errorElement:<ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -40,6 +44,11 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path:"/updateAddition/:id",
+        element:<UpdateService></UpdateService>,
+        loader:({params})=>fetch(`http://localhost:5000/showAddService/${params.id}`)
       },
       {
         path: "/myservices",

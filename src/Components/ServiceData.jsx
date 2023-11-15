@@ -74,9 +74,9 @@ const ServiceData = () => {
     <div>
       <Navbar></Navbar>
 
-      <h3 className="text-3xl">Service Provider Information</h3>
+      <h3 className="text-3xl font-bold ">Service Provider Information</h3>
       <div className=" my-5">
-        <div className="card card-side bg-base-100  shadow-xl">
+        <div className="card card-side bg-base-100  shadow-2xl">
           <figure>
             <img
               className="w-[400px]"
@@ -85,14 +85,14 @@ const ServiceData = () => {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">{serviceProvider.name}</h2>
-            <p>{serviceArea}</p>
+            <h2 className="card-title">Name : {serviceProvider.name}</h2>
+            <p >Area :  {serviceArea}</p>
           </div>
         </div>
       </div>
 
       {/* Single Service */}
-      <h2 className="text-4xl my-5">Single Service Information</h2>
+      <h2 className="text-4xl font-bold my-5">Single Service Information</h2>
 
       <div className="card   bg-base-200 my-10 shadow-xl">
         <figure>
@@ -127,7 +127,7 @@ const ServiceData = () => {
               className="btn btn-outline btn-warning  "
               onClick={() => document.getElementById("my_modal_1").showModal()}
             >
-              Book
+              Book Now
             </button>
             <dialog id="my_modal_1" className="modal">
               <div className="modal-box">
@@ -204,7 +204,7 @@ const ServiceData = () => {
                   </div>
 
                   <div className="form-control mt-6">
-                    <button className="btn btn-warning">Book Now</button>
+                    <button className="btn btn-warning">Purchase</button>
                   </div>
                 </form>
                 <div className="modal-action">

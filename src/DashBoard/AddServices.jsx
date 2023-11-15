@@ -3,18 +3,21 @@ import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
+import axios from "axios";
 
 const AddServices = () => {
   const { user } = useContext(AuthContext);
   const UserName = user?.displayName;
   const email = user?.email;
-  console.log(UserName, email);
+  const photo = user?.photoURL;
+  console.log(UserName, email, photo);
 
   const handleAddService = (e) => {
     e.preventDefault();
     const form = e.target;
-    const Image = form.photo.value;
+
     const Name = form.serviceName.value;
+    const Image=form.servicePhoto.value;
 
     const Price = form.price.value;
     const serviceArea = form.serviceArea.value;
@@ -26,33 +29,46 @@ const AddServices = () => {
       Price,
       UserName,
       email,
+      photo,
       description,
     };
     console.log(product);
 
+    // axios
+    axios.post("http://localhost:5000/addservices", product).then((res) => {
+      console.log(res);
+      if (res.data?.insertedId) {
+        Swal.fire({
+          icon: "success",
+          title: "Successfully added",
+          text: "Products Successfully added to backend",
+        });
+      }
+    });
+
     // fetching
 
-    fetch("http://localhost:5000/addservices", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(product),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data, "success");
-        if (data.insertedId) {
-          Swal.fire({
-            icon: "success",
-            title: "Successfully added",
-            text: "Products Successfully added to backend",
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // fetch("http://localhost:5000/addservices", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(product),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data, "success");
+    //     if (data.insertedId) {
+    //       Swal.fire({
+    //         icon: "success",
+    //         title: "Successfully added",
+    //         text: "Products Successfully added to backend",
+    //       });
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
@@ -64,14 +80,15 @@ const AddServices = () => {
             <h2 className="text-black font-bold text-3xl text-center pb-4">
               Add Service
             </h2>
+             
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Photo URL</span>
+                <span className="label-text">Service Photo URL </span>
               </label>
               <input
                 type="text"
-                name="photo"
-                placeholder="Photo Here"
+                name="servicePhoto"
+                placeholder="Service Photo "
                 className="input input-bordered input-info  "
                 required
               />
@@ -101,6 +118,13 @@ const AddServices = () => {
                 <option value="strawberry">Huawei</option>
               </select>
             </div> */}
+             <div className="form-control">
+              <label className="label">
+                <span className="label-text">User   Photo </span>
+              </label>
+
+              <img className="md:w-32 w-20 " src={user?.photoURL} alt="" />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">User Name</span>
