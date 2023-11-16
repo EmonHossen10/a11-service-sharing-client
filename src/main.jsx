@@ -18,6 +18,7 @@ import AuthProvider from "./Providers/AuthProvider.jsx";
 import PrivateRoute from "./Routes/PrivateRoute.jsx";
 import ErrorPage from "./ErrorPage.jsx";
 import UpdateService from "./DashBoard/UpdateService.jsx";
+import AboutUs from "./Pages/AboutUs.jsx";
  
 
 const router = createBrowserRouter([
@@ -61,7 +62,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/addservices",
-        element: <AddServices></AddServices>,
+        element:<PrivateRoute> <AddServices></AddServices></PrivateRoute>,
+      },
+      {
+        path:"/about",
+        element:<AboutUs></AboutUs>
       },
 
       {

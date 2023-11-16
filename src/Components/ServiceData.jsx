@@ -3,9 +3,13 @@ import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const ServiceData = () => {
   const data = useLoaderData();
+  const {user}=useContext(AuthContext)
+  console.log(user?.email)
 
   const {
     _id,
@@ -76,7 +80,7 @@ const ServiceData = () => {
 
       <h3 className="text-3xl font-bold ">Service Provider Information</h3>
       <div className=" my-5">
-        <div className="card card-side bg-base-100  shadow-2xl">
+        <div className="card md:card-side bg-base-100  shadow-2xl">
           <figure>
             <img
               className="w-[400px]"
@@ -96,7 +100,7 @@ const ServiceData = () => {
 
       <div className="card   bg-base-200 my-10 shadow-xl">
         <figure>
-          <img src={serviceImage} alt="Shoes" />
+          <img className="md:w-5/12" src={serviceImage} alt="Shoes" />
         </figure>
         <div className="card-body">
           <h2 className="card-title font-bold">{serviceName}</h2>
@@ -172,9 +176,10 @@ const ServiceData = () => {
                     <input
                       type="email"
                       name="email"
+                      defaultValue={user?.email}
                       placeholder="email"
                       className="input input-bordered"
-                      required
+                       disabled
                     />
                   </div>
                   <div className="form-control">

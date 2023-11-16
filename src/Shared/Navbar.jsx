@@ -45,6 +45,20 @@ const Navbar = () => {
           Services
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/about"
+          className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? " bg-[#FFDC39] rounded-none font-bold  "
+              : ""
+          }
+        >
+          About Us
+        </NavLink>
+      </li>
       {/* dropdown */}
 
       {user && (
