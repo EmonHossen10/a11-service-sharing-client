@@ -1,10 +1,12 @@
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import Banner from "./Banner";
+import Counter from "./Counter";
 import Faq from "./Faq";
-
+import Map from "./Map";
 import PopularServices from "./PopularServices";
 import Pricing from "./Pricing";
+
 
 const Home = () => {
   return (
@@ -15,6 +17,8 @@ const Home = () => {
         <PopularServices></PopularServices>
         <Faq></Faq>
         <Pricing></Pricing>
+        <Map></Map>
+        <Counter></Counter>
 
         <Footer></Footer>
       </nav>
