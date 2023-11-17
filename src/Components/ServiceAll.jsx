@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 const ServiceAll = ({ item }) => {
   const {
     _id,
-    id,
     serviceName,
     serviceDescription,
-    serviceProvider,
+    serviceProviderImage,
+    serviceProviderName,
     servicePrice,
     serviceImage,
     serviceArea,
+    userEmail,
   } = item;
   return (
     <div>
@@ -31,7 +32,7 @@ const ServiceAll = ({ item }) => {
           <div className="flex my-4  space-x-4 items-center  ">
             <img
               alt=""
-              src={serviceProvider.image}
+              src={serviceProviderImage}
               className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
             />
             <div className="flex flex-col space-y-1">
@@ -40,10 +41,11 @@ const ServiceAll = ({ item }) => {
                 href="#"
                 className="text-sm font-bold"
               >
-                {serviceProvider.name}
+                {serviceProviderName}
               </a>
             </div>
           </div>
+          <p className="text-lg font-semibold" >Service Provider Email : {userEmail}</p>
 
           <p
             className="font-semi
@@ -51,9 +53,9 @@ const ServiceAll = ({ item }) => {
           >
             Service Area : {serviceArea}
           </p>
-          <p className="font-bold">Price : {servicePrice}</p>
+          <p className="font-bold">Price : ${servicePrice}</p>
           <div className="card-actions  mt-3">
-            <Link to={`/services/${_id}`} >
+            <Link to={`/services/${_id}`}>
               <button className="btn btn-success">View Details</button>
             </Link>
           </div>

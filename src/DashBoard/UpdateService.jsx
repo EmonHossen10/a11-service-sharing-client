@@ -7,26 +7,27 @@ const UpdateService = () => {
   const data = useLoaderData();
   const {
     _id,
-    Image,
-    Name,
-    serviceArea,
-    Price,
-    UserName,
-    email,
-    photo,
-    description,
+    serviceName
+    
   } = data;
+  console.log(data);
 
   const handleUpdate = (e) => {
     e.preventDefault();
 
     const form = e.target;
-    const pic = form.pic.value;
-    const name = form.name.value;
-    const description = form.description.value;
-    const area = form.area.value;
-    const price = form.price.value;
-    const updatedService = { pic, name, description, area, price };
+    const serviceImage = form.pic.value;
+    const serviceName = form.name.value;
+    const serviceDescription = form.description.value;
+    const serviceArea = form.area.value;
+    const servicePrice = form.price.value;
+    const updatedService = {
+      serviceImage,
+      serviceName,
+      serviceDescription,
+      serviceArea,
+      servicePrice,
+    };
     console.log(updatedService);
 
     //
@@ -55,9 +56,7 @@ const UpdateService = () => {
       <Navbar></Navbar>
 
       <div className=" rounded-xl my-5 bg-base-200">
-        <h1 className="text-3xl text- pt-4 ps-9 font-bold">
-          Update Service : {Name}{" "}
-        </h1>
+        <h1 className="text-3xl text- pt-4 ps-9 font-bold">Update Service : {serviceName} </h1>
         <form onSubmit={handleUpdate} className="card-body">
           <div className="form-control">
             <label className="label">
@@ -73,7 +72,7 @@ const UpdateService = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Name </span>
+              <span className="label-text">Service Name </span>
             </label>
             <input
               type="text"

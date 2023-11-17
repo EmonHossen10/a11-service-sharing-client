@@ -8,19 +8,22 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 const ServiceData = () => {
   const data = useLoaderData();
-  const {user}=useContext(AuthContext)
-  console.log(user?.email)
+  const { user } = useContext(AuthContext);
+  console.log(user?.email);
 
   const {
     _id,
 
     serviceName,
     serviceDescription,
-    serviceProvider,
+    serviceProviderName,
+    serviceProviderImage,
     serviceArea,
     servicePrice,
     serviceImage,
+    userEmail,
   } = data;
+  console.log(data);
 
   const handleBookService = (e) => {
     e.preventDefault();
@@ -34,6 +37,8 @@ const ServiceData = () => {
       date,
       serviceImage,
       plan,
+      serviceProviderEmail: userEmail,
+      status:"Pending"
     };
     console.log(order);
 
@@ -52,27 +57,7 @@ const ServiceData = () => {
       .catch((error) => {
         console.error("Error:", error);
       });
-
-    // fetching
-
-    // fetch("http://localhost:5000/addbookings", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(order),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data, "success");
-    //     if (data.insertedId) {
-    //       Swal.fire({
-    //         icon: "success",
-    //         title: "Successfully added",
-    //         text: "Products Successfully added to backend",
-    //       });
-    //     }
-    //   });
+ 
   };
   return (
     <div>
@@ -82,15 +67,14 @@ const ServiceData = () => {
       <div className=" my-5">
         <div className="card md:card-side bg-base-100  shadow-2xl">
           <figure>
-            <img
-              className="w-[400px]"
-              src={serviceProvider.image}
-              alt="Movie"
-            />
+            <img className="w-[400px]" src={serviceProviderImage} alt="Movie" />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">Name : {serviceProvider.name}</h2>
-            <p >Area :  {serviceArea}</p>
+            <h2 className="card-title">Name : {serviceProviderName}</h2>
+            <p className="font-semibold">
+              Service Provider Email : {userEmail}
+            </p>
+            <p>Area : {serviceArea}</p>
           </div>
         </div>
       </div>
@@ -110,7 +94,7 @@ const ServiceData = () => {
           <div className="flex my-4  space-x-4 items-center  ">
             <img
               alt=""
-              src={serviceProvider.image}
+              src={serviceProviderImage}
               className="object-cover w-12 h-12 rounded-full shadow dark:bg-gray-500"
             />
             <div className="flex flex-col space-y-1">
@@ -119,12 +103,12 @@ const ServiceData = () => {
                 href="#"
                 className="text-sm font-bold"
               >
-                {serviceProvider.name}
+                {serviceProviderName}
               </a>
             </div>
           </div>
 
-          <p className="font-bold">Price : {servicePrice}</p>
+          <p className="font-bold">Price : ${servicePrice}</p>
           <div className="card-actions  mt-3">
             {/* modal */}
             <button
@@ -163,7 +147,22 @@ const ServiceData = () => {
                     <input
                       type="email"
                       placeholder="email"
-                      defaultValue={serviceProvider.name}
+                      defaultValue={serviceProviderName}
+                      disabled
+                      className="input input-bordered"
+                      required
+                    />
+                  </div>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">
+                        Service Provider Email{" "}
+                      </span>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="Service Provider Email "
+                      defaultValue={userEmail}
                       disabled
                       className="input input-bordered"
                       required
@@ -179,7 +178,7 @@ const ServiceData = () => {
                       defaultValue={user?.email}
                       placeholder="email"
                       className="input input-bordered"
-                       disabled
+                      disabled
                     />
                   </div>
                   <div className="form-control">

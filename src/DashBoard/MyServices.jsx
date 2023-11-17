@@ -11,10 +11,10 @@ const MyServices = () => {
   const [datas, setDatas] = useState([]);
   const [spinner, setSpinner] = useState(true);
 
-  console.log(datas);
+  console.log(user);
 
   // load data
-  const url = `http://localhost:5000/showAddService?email=${user?.email}`;
+  const url = `http://localhost:5000/showServices?userEmail=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -71,7 +71,7 @@ const MyServices = () => {
 
       <h1>Length : {datas.length}</h1>
 
-      <div className="grid gap-5 my-5 ">
+      {datas.length > 0 ? <div className="grid gap-5 my-5 ">
         {datas.map((item) => (
           <MyserviceSingle
             key={item._id}
@@ -79,7 +79,13 @@ const MyServices = () => {
             handleDelete={handleDelete}
           ></MyserviceSingle>
         ))}
+      </div>:
+      <div>
+        <img src="https://i.imgur.com/LhB8EMc.png" alt="" />
       </div>
+      
+    }
+
       <Footer></Footer>
     </div>
   );

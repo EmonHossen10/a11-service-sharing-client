@@ -7,30 +7,29 @@ import axios from "axios";
 
 const AddServices = () => {
   const { user } = useContext(AuthContext);
-  const UserName = user?.displayName;
-  const email = user?.email;
-  const photo = user?.photoURL;
-  console.log(UserName, email, photo);
+  const serviceProviderName = user?.displayName;
+  const userEmail = user?.email;
+  const serviceProviderImage = user?.photoURL;
+  console.log(serviceProviderName, userEmail, serviceProviderImage);
 
   const handleAddService = (e) => {
     e.preventDefault();
     const form = e.target;
 
-    const Name = form.serviceName.value;
-    const Image=form.servicePhoto.value;
-
-    const Price = form.price.value;
+    const serviceName = form.serviceName.value;
+    const serviceImage = form.servicePhoto.value;
+    const servicePrice = form.price.value;
     const serviceArea = form.serviceArea.value;
-    const description = form.description.value;
+    const serviceDescription = form.description.value;
     const product = {
-      Image,
-      Name,
+      serviceImage,
+      serviceName,
       serviceArea,
-      Price,
-      UserName,
-      email,
-      photo,
-      description,
+      servicePrice,
+      serviceProviderName,
+      userEmail,
+      serviceProviderImage,
+      serviceDescription,
     };
     console.log(product);
 
@@ -80,7 +79,7 @@ const AddServices = () => {
             <h2 className="text-black font-bold text-3xl text-center pb-4">
               Add Service
             </h2>
-             
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Service Photo URL </span>
@@ -118,9 +117,9 @@ const AddServices = () => {
                 <option value="strawberry">Huawei</option>
               </select>
             </div> */}
-             <div className="form-control">
+            <div className="form-control">
               <label className="label">
-                <span className="label-text">User   Photo </span>
+                <span className="label-text">User Photo </span>
               </label>
 
               <img className="md:w-32 w-20 " src={user?.photoURL} alt="" />

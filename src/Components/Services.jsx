@@ -11,11 +11,7 @@ const Services = () => {
     <div>
       <Navbar></Navbar>
       <h3 className="text-3xl text-center font-bold my-10" >services : {datas.length}</h3>
-      {/* <div className="grid grid-cols-1 gap-5 my-10 mx-auto ">
-        {datas.map((item) => (
-          <ServiceAll key={item._id} item={item}></ServiceAll>
-        ))}
-      </div> */}
+     
       <div className="grid grid-cols-1 gap-5 my-10 mx-auto ">
         {datas.map((item) => (
           <ServiceAll key={item._id} item={item}></ServiceAll>

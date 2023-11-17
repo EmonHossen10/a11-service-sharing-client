@@ -19,18 +19,17 @@ import PrivateRoute from "./Routes/PrivateRoute.jsx";
 import ErrorPage from "./ErrorPage.jsx";
 import UpdateService from "./DashBoard/UpdateService.jsx";
 import AboutUs from "./Pages/AboutUs.jsx";
- 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout></Layout>,
-    errorElement:<ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/services")
+        loader: () => fetch("http://localhost:5000/services"),
       },
       {
         path: "/services",
@@ -48,26 +47,43 @@ const router = createBrowserRouter([
           fetch(`http://localhost:5000/services/${params.id}`),
       },
       {
-        path:"/updateAddition/:id",
-        element:<UpdateService></UpdateService>,
-        loader:({params})=>fetch(`http://localhost:5000/showAddService/${params.id}`)
+        path: "/updateAddition/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateService></UpdateService>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/showAddService/${params.id}`),
       },
       {
         path: "/myservices",
-        element: <MyServices></MyServices>
-      
+        element: (
+          <PrivateRoute>
+            <MyServices></MyServices>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myschedule",
-        element: <PrivateRoute><MySchedule></MySchedule></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MySchedule></MySchedule>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/addservices",
-        element:<PrivateRoute> <AddServices></AddServices></PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AddServices></AddServices>
+          </PrivateRoute>
+        ),
       },
       {
-        path:"/about",
-        element:<AboutUs></AboutUs>
+        path: "/about",
+        element: <AboutUs></AboutUs>,
       },
 
       {
