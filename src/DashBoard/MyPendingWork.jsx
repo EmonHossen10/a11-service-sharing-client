@@ -1,22 +1,21 @@
 /* eslint-disable react/prop-types */
+
 import { useState } from "react";
-import Swal from "sweetalert2";
 
 const MyPendingWork = ({ item, idx, handleChange }) => {
-  
   const {
     _id,
     serviceName,
-    email,
+
     date,
     serviceImage,
     plan,
     serviceProviderEmail,
     status,
   } = item;
-  console.log(item);
-  
-  const [pending, setPending] = useState(status);
+  // const [use, setUse] = useState(status);
+  // console.log(use);
+
   return (
     <tr>
       <td className="font-bold">{idx + 1}</td>
@@ -44,14 +43,18 @@ const MyPendingWork = ({ item, idx, handleChange }) => {
       <td>
         {/* <button className="btn btn-ghost btn-xs">Pending</button> */}
 
-        <button onChange={() => handleChange(_id)}>
-          <label htmlFor="dropdown"> </label>
-          <select id="dropdown" defaultValue={pending} name="dropdown">
-            <option value="option1">Pending</option>
-            <option value="option2">In Progress</option>
-            <option value="option3">Completed</option>
-          </select>
-        </button>
+        {status === "Completed" ? (
+          <span className="font-bold text-primary">Completed</span>
+        ) : (
+          <button onChange={(e) => handleChange(_id, e.target.value)}>
+            <label htmlFor="dropdown"> </label>
+            <select id="dropdown" defaultValue={status} name="dropdown">
+              <option value="pending">Pending</option>
+              <option value="In progress">In Progress</option>
+              <option value="Completed">Completed</option>
+            </select>
+          </button>
+        )}
       </td>
     </tr>
   );

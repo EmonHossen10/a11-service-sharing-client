@@ -31,20 +31,27 @@ const MySchedule = () => {
       });
   }, [url2]);
 
-  const handleChange = (id) => {
-    console.log("changing", id);
+  // updates status in backend
+
+  const handleChange = (id, selectedValue) => {
+    console.log("changing", id, selectedValue);
     fetch(`http://localhost:5000/pendingBooking/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ status: "confirm" }),
+      body: JSON.stringify({ status: selectedValue }),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          Swal("data updated");
+          Swal.fire("SweetAlert2 is working!");
+          const remaining= pending.filter(pending=> pending._id !== id )
+          const updated =pending.find(pending=> pending._id == id)
+          updated.status=selectedValue;
+          const newPending=[updated,...remaining];
+          setPending(newPending)
         }
       });
   };
@@ -66,18 +73,20 @@ const MySchedule = () => {
         </div>
       )}
 
+      {/* here pending works */}
+
       <h1 className="text-3xl font-bold my-10 ">My Pending works </h1>
 
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
-              <th>SI No :</th>
+            <tr >
+              <th >SI No :</th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
+              <th>Description</th>
+              <th>Date</th>
+              <th>Service Status</th>
             </tr>
           </thead>
           <tbody>

@@ -45,7 +45,9 @@ const ServiceAll = ({ item }) => {
               </a>
             </div>
           </div>
-          <p className="text-lg font-semibold" >Service Provider Email : {userEmail}</p>
+          <p className="text-lg font-semibold">
+            Service Provider Email : {userEmail}
+          </p>
 
           <p
             className="font-semi

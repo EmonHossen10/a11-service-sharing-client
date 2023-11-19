@@ -38,7 +38,7 @@ const ServiceData = () => {
       serviceImage,
       plan,
       serviceProviderEmail: userEmail,
-      status:"Pending"
+       
     };
     console.log(order);
 

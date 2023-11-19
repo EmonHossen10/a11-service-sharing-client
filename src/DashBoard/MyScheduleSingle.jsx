@@ -9,6 +9,7 @@ const MyScheduleSingle = ({ item }) => {
     plan,
     serviceImage,
     serviceProviderEmail,
+    status
   } = item;
 
   const handleBuySuccess = () => {
@@ -33,6 +34,11 @@ const MyScheduleSingle = ({ item }) => {
           </p>
           <p> Your Plan : {plan}</p>
           <p className="font-semibold" >Service Provider Email : {serviceProviderEmail}</p>
+          <p className="font-bold" > Status :  
+             {status ? status : "Pending"}
+          
+          </p>
+
           <div className="card-actions">
             <button onClick={handleBuySuccess} className="btn btn-primary">
               Buy Now
