@@ -1,4 +1,4 @@
-import  { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
@@ -11,6 +11,7 @@ const Services = () => {
   const datas = useLoaderData();
   const [service, setService] = useState(datas);
   const [displayCount, setDisplayCount] = useState(6);
+  console.log(datas)
 
   const searchRef = useRef();
 
@@ -30,7 +31,6 @@ const Services = () => {
   };
 
   const handleShowMore = () => {
-    // Increase the display count to show more services
     setDisplayCount((prevCount) => prevCount + 6);
   };
 
@@ -61,8 +61,8 @@ const Services = () => {
       </div>
 
       <h3 className="text-3xl   font-bold my-10">
-        Total services:{" "}
-        {service.length  }
+        Total services:
+        {service.length}
       </h3>
 
       {/* Show slice data */}
