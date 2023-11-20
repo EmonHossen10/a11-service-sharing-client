@@ -15,7 +15,7 @@ useEffect(()=>{
 
     return (
         <div  >
-            <h2 className="text-5xl font-poppins text-center font-semibold my-3">Popular Services</h2>
+            <h2 className="md:text-5xl text-3xl font-poppins text-center font-semibold my-3">Popular Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-24  "  >
                 {
                     services.slice(0,4).map(item=><PopularServicesSingle key={item._id} item={item}></PopularServicesSingle>)

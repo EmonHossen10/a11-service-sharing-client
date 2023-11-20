@@ -1,8 +1,18 @@
-# React + Vite
+# features and functionalities :
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- **Database:** Main part is i use mongoDB database for store data and also env variable for secret keys .
 
-Currently, two official plugins are available:
+- **Navigation:** The homepage features a navigation bar that allows users to easily navigate to different sections of the website.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Main Section:** There are a section where user can see the details about services and i use  React- Leaflet and react counter in this project .
+
+- **Private Routes:** Service detail routes are protected, ensuring that only logged-in users can access them. Unauthorized users are redirected to the login page.
+
+- **Authentication:** The project implements email and password-based authentication, allowing users to register and log in securely.
+
+## Website Name :
+
+**Service Master**
+
+## Live Site Link:
+ 

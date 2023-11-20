@@ -9,7 +9,6 @@ import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
 
 const Login = () => {
-
   const { loginUser, GoogleSignIn } = useContext(AuthContext);
 
   const location = useLocation();
@@ -29,7 +28,7 @@ const Login = () => {
         Swal.fire({
           icon: "success",
           title: "Successfully added",
-          text: "Products Successfully added to backend",
+          text: "User Login Successfully",
         });
 
         // navigate after login
@@ -48,24 +47,18 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
 
-        Swal.fire({
-          icon: "success",
-          title: "Successfully added",
-          text: "Products Successfully added to backend",
-        });
+        //
         // navigate after login
         navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.error(error.message);
- 
       });
   };
 
-
   return (
     <>
-    <Helmet>
+      <Helmet>
         <title>Service Master | Login</title>
       </Helmet>
       <Navbar></Navbar>
@@ -120,7 +113,8 @@ const Login = () => {
               </div>
               {/* social */}
               <div className="flex justify-center space-x-4">
-                <button onClick={handleGoogleLogin}
+                <button
+                  onClick={handleGoogleLogin}
                   aria-label="Log in with Google"
                   className="p-1 rounded-sm"
                 >
@@ -129,8 +123,11 @@ const Login = () => {
               </div>
               <p className="text-xs text-center sm:px-6 dark:text-gray-400">
                 Do not have an account ?
-                <Link to="/registration" >
-                  <button className="font-semibold ms-2 text-blue-600 underline"> Sign up</button>
+                <Link to="/registration">
+                  <button className="font-semibold ms-2 text-blue-600 underline">
+                    {" "}
+                    Sign up
+                  </button>
                 </Link>
               </p>
             </form>
