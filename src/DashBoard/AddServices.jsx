@@ -4,6 +4,7 @@ import Navbar from "../Shared/Navbar";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const AddServices = () => {
   const { user } = useContext(AuthContext);
@@ -72,6 +73,9 @@ const AddServices = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Service Master | Add Service</title>
+      </Helmet>
       <Navbar></Navbar>
       <div className="hero min-h-screen bg-base-200   ">
         <div className="shadow-2xl bg-base-300 w-8/12 rounded-xl mx-auto">

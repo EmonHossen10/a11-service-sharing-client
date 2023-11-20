@@ -8,6 +8,7 @@ import Footer from "../Shared/Footer";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
  
 
@@ -66,6 +67,9 @@ const Registration = () => {
 
     return (
         <>
+        <Helmet>
+        <title>Service Master | Registration</title>
+      </Helmet>
          <Navbar></Navbar>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col md:gap-24   lg:flex-row">

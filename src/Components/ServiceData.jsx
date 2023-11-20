@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const ServiceData = () => {
   const data = useLoaderData();
@@ -61,6 +62,9 @@ const ServiceData = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Service Master | {serviceProviderName}</title>
+      </Helmet>
       <Navbar></Navbar>
 
       <h3 className="text-3xl font-bold ">Service Provider Information</h3>

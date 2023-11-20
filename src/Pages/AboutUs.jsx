@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 
 const AboutUs = () => {
   return (
     <div>
+      <Helmet>
+        <title>Service Master | About Us</title>
+      </Helmet>
       <Navbar></Navbar>
       <div className="about-us-container p-8 bg-gray-100">
         <h2 className="text-3xl font-bold mb-4">About Us</h2>

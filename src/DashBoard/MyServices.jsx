@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { AuthContext } from "../Providers/AuthProvider";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
@@ -67,6 +68,9 @@ const MyServices = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>Service Master | My Services</title>
+      </Helmet>
       <Navbar></Navbar>
 
       <h1>Length : {datas.length}</h1>

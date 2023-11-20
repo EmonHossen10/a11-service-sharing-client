@@ -5,6 +5,7 @@ import Footer from "../Shared/Footer";
 import { useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   const datas = useLoaderData();
@@ -30,6 +31,9 @@ const Services = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Service Master | All services</title>
+      </Helmet>
       <Navbar></Navbar>
       {/* search part */}
       <div>
@@ -51,7 +55,7 @@ const Services = () => {
       </div>
 
       <h3 className="text-3xl text-center font-bold my-10">
-        services : {datas.length}
+       Total services : {datas.length}
       </h3>
 
       <div className="grid grid-cols-1 gap-5 my-10 mx-auto ">

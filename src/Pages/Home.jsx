@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Footer from "../Shared/Footer";
 import Navbar from "../Shared/Navbar";
 import Banner from "./Banner";
@@ -11,6 +12,9 @@ import Pricing from "./Pricing";
 const Home = () => {
   return (
     <div>
+      <Helmet>
+        <title>Service Master | Home</title>
+      </Helmet>
       <nav>
         <Navbar></Navbar>
         <Banner></Banner>
