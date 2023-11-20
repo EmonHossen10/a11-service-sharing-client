@@ -13,7 +13,7 @@ const MySchedule = () => {
   const [pending, setPending] = useState([]);
   console.log(user);
 
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `https://service-sharing-server-alpha.vercel.app/bookings?email=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -23,7 +23,7 @@ const MySchedule = () => {
   }, [url]);
 
   // pending data
-  const url2 = `http://localhost:5000/pendingBooking?serviceProviderEmail=${user?.email}`;
+  const url2 = `https://service-sharing-server-alpha.vercel.app/pendingBooking?serviceProviderEmail=${user?.email}`;
   useEffect(() => {
     fetch(url2)
       .then((res) => res.json())
@@ -36,7 +36,7 @@ const MySchedule = () => {
 
   const handleChange = (id, selectedValue) => {
     console.log("changing", id, selectedValue);
-    fetch(`http://localhost:5000/pendingBooking/${id}`, {
+    fetch(`https://service-sharing-server-alpha.vercel.app/pendingBooking/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -47,7 +47,7 @@ const MySchedule = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          Swal.fire("SweetAlert2 is working!");
+          Swal.fire("Pending works status updated");
           const remaining = pending.filter((pending) => pending._id !== id);
           const updated = pending.find((pending) => pending._id == id);
           updated.status = selectedValue;

@@ -35,7 +35,7 @@ const AddServices = () => {
     console.log(product);
 
     // axios
-    axios.post("http://localhost:5000/addservices", product).then((res) => {
+    axios.post("https://service-sharing-server-alpha.vercel.app/addservices", product).then((res) => {
       console.log(res);
       if (res.data?.insertedId) {
         Swal.fire({

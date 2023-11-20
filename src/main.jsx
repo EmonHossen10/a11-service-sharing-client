@@ -30,12 +30,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://service-sharing-server-alpha.vercel.app/services"),
       },
       {
         path: "/services",
         element: <Services></Services>,
-        loader: () => fetch("http://localhost:5000/services"),
+        loader: () => fetch("https://service-sharing-server-alpha.vercel.app/services"),
       },
       {
         path: "/services/:id",
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`https://service-sharing-server-alpha.vercel.app/services/${params.id}`),
       },
       {
         path: "/updateAddition/:id",
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/showAddService/${params.id}`),
+          fetch(`https://service-sharing-server-alpha.vercel.app/showAddService/${params.id}`),
       },
       {
         path: "/myservices",

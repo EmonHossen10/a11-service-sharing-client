@@ -44,7 +44,7 @@ const ServiceData = () => {
     console.log(order);
 
     axios
-      .post("http://localhost:5000/addbookings", order)
+      .post("https://service-sharing-server-alpha.vercel.app/addbookings", order)
       .then((data) => {
         console.log(data.data);
         if (data.data.insertedId) {

@@ -15,7 +15,7 @@ const MyServices = () => {
   console.log(user);
 
   // load data
-  const url = `http://localhost:5000/showServices?userEmail=${user?.email}`;
+  const url = `https://service-sharing-server-alpha.vercel.app/showServices?userEmail=${user?.email}`;
   useEffect(() => {
     fetch(url)
       .then((res) => res.json())
@@ -37,7 +37,7 @@ const MyServices = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/showAddService/${id}`, {
+        fetch(`https://service-sharing-server-alpha.vercel.app/showAddService/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

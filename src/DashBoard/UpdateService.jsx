@@ -32,7 +32,7 @@ const UpdateService = () => {
 
     //
 
-    fetch(`http://localhost:5000/showAddService/${_id}`, {
+    fetch(`https://service-sharing-server-alpha.vercel.app/showAddService/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
