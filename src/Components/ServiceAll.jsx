@@ -19,7 +19,7 @@ const ServiceAll = ({ item }) => {
       <div className="card   bg-base-100 shadow-xl">
         <figure>
           <img
-            className="w-full md:h-[450px]   "
+            className="w-full md:h-[400px]   "
             src={serviceImage}
             alt="Shoes"
           />
