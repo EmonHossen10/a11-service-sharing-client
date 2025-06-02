@@ -49,11 +49,6 @@ A robust and scalable full-stack web application built with the MERN stack. This
 
 ---
 
-
-
-
----
-
 ## 📂 Folder Structure
 
 client/
