@@ -3,7 +3,9 @@
 A robust and scalable full-stack web application built with the MERN stack. This project features secure authentication, dynamic data interaction, service booking/management, and real-time components like maps and counters.
 
 ## 🔗 Live Demo  
-**👉 [Click here to view the project](https://655bb2950553e718f37aaa29--earnest-macaron-5b91b8.netlify.app/)**
+
+<a href="https://655bb2950553e718f37aaa29--earnest-macaron-5b91b8.netlify.app/" target="_blank"><strong>👉 Click here to view the project</strong></a>
+
 
 
 ## 🔒 Secure & Scalable Backend
