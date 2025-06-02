@@ -49,9 +49,8 @@ A robust and scalable full-stack web application built with the MERN stack. This
 
 ---
 
-# Test Image
-
-![Test Image](https://i.ibb.co/0LkntPT/a-11.png)
+<h2>📸 Screenshot</h2>
+<img src="https://i.ibb.co/0LkntPT/a-11.png" alt="Home Page Screenshot" width="600" />
 
 
 ---
